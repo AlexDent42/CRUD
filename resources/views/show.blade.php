@@ -12,7 +12,12 @@
     <li class="list-group-item">Email: {{ $user->email }}</li>
     <li class="list-group-item">Created at: {{ $user->created_at->format('Y/m/d') }}</li>
     <li class="list-group-item">Updated at: {{ $user->updated_at->format('Y/m/d, H:i:s ') }}</li>
-    <a type="button" class="btn btn-warning" href="{{ route('users.edit', $user) }}">Edit</a>
+    <form method="POST" action="{{ route('users.destroy', $user) }}">
+			      		<a type="button" class="btn btn-warning" href="{{ route('users.edit', $user) }}">Edit</a>
+			      		@csrf
+			      		@method('DELETE')
+			      		<button class="btn btn-danger " type="submit">Delete</button>
+			      	</form>
   </ul>
 </div>
 @endsection
