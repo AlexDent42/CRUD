@@ -20,7 +20,9 @@
 			   
 			    <tr>
 			      <th scope="row">{{ $user->id }}</th>
-			      <td colspan="2">{{ $user->name }}</td>
+			      <td colspan="2">
+			      	<a href="{{ route('users.show', $user) }}">{{ $user->name }}</a>
+			      </td>
 			      <td>{{ $user->email }}</td>
 			      <td><a type="button" class="btn btn-warning" href="{{ route('users.edit', $user) }}">Edit</a></td>
 			    </tr>
