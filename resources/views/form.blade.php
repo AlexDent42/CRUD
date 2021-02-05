@@ -14,7 +14,7 @@
 			action="{{ route('users.update', $user) }}"
 
 			@else
-			action="{{ route('users.store', $user) }}"
+			action="{{ route('users.store') }}"
 			@endif
 			>
 				@csrf
@@ -24,10 +24,16 @@
 				@endisset
 						<div class="row">
 					  <div class="col">
-					    <input type="text" name="name" value="{{ isset($user) ? $user->name : null }}"class="form-control" placeholder="Name" aria-label="Name">
+					    <input type="text" name="name" value="{{ old('name', isset($user) ? $user->name : null) }}"class="form-control" placeholder="Name" aria-label="Name">
+					    @error('name')
+					    <div class="alert alert-danger">{{ $message }}</div>
+					    @enderror
 					  </div>
 					  <div class="col">
-					    <input type="text" value="{{ isset($user) ? $user->email : null }}"name="email" class="form-control" placeholder="Email" aria-label="Email">
+					    <input type="text" value="{{ old('email',isset($user) ? $user->email : null) }}"name="email" class="form-control" placeholder="Email" aria-label="Email">
+					    @error('email')
+					    <div class="alert alert-danger">{{ $message }}</div>
+					    @enderror
 					  </div>
 					  <div class="row mt-3">
 					  	<div class="d-flex justify-content-end">
